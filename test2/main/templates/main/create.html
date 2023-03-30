@@ -1,0 +1,25 @@
+{% extends 'main/base.html' %}
+
+{%block title%}
+создание задачи
+{%endblock%}
+
+{% block ref%}
+<li class="nav-item"><a href="{% url 'home' %}" class="nav-link ">Заметки</a></li>
+<li class="nav-item"><a href="{% url 'create' %}" class="nav-link active" aria-current="page">Добавить заметку</a></li>
+<li class="nav-item"><a href="{% url 'weather' %}" class="nav-link">Погода</a></li>
+<li class="nav-item"><a href="{% url 'about' %}" class="nav-link ">О нас</a></li>
+{%endblock%}
+
+
+
+{%block content%}
+    <h2>создать заметку</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.title}}<br>
+        {{ form.task}}<br>
+        <button type="submit" class="btn btn-success">Добавить задачу</button>
+        <span>{{error}}</span>
+    </form>
+{%endblock%}

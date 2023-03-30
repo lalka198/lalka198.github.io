@@ -1,0 +1,30 @@
+{% extends 'main/base.html' %}
+
+{%block title%}
+{{ title }}
+{% endblock %}
+
+{%block ref%}
+
+<li class="nav-item"><a href="{% url 'home' %}" class="nav-link active" aria-current="page">Заметки</a></li>
+<li class="nav-item"><a href="{% url 'create' %}" class="nav-link" >Добавить заметку</a></li>
+<li class="nav-item"><a href="{% url 'weather' %}" class="nav-link">Погода</a></li>
+<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">О нас</a></li>
+{% endblock %}
+
+{%block content%}
+    <div>Мои заметки</div>
+    {% if tasks %}
+        {% for el in tasks %}
+            <div class="alert alert-warning mt-2" >
+                <h2>{{ el.title}} </h2>
+                <p>{{ el.task}} </p>
+            </div>
+        {% endfor %}
+    {%else%}
+        <p>Нет записей</p>
+    {% endif %}
+
+{% endblock %}
+
+

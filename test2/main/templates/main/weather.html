@@ -1,0 +1,42 @@
+{% extends 'main/base.html' %}
+
+{%block title%}
+About
+{%endblock%}
+
+{% block ref%}
+<li class="nav-item"><a href="{% url 'home' %}" class="nav-link ">Заметки</a></li>
+<li class="nav-item"><a href="{% url 'create' %}" class="nav-link ">Добавить заметку</a></li>
+<li class="nav-item"><a href="{% url 'weather' %}" class="nav-link active" aria-current="page">Погода</a></li>
+<li class="nav-item"><a href="{% url 'about' %}" class="nav-link">О нас</a></li>
+{%endblock%}
+
+
+
+{%block content%}
+    <div class="container">
+        <div class="row">
+            <div class="col-2 offset">
+                <h1>Погода в городе</h1>
+                <form action="" method="POST">
+                    {% csrf_token %}
+                    <label for="city">Город</label>
+                    <input type="text" id="city" class="form-controll" name="city" placeholder="Укажите Название">
+                    <input type="submit" name="send" value="Посмотреть температуру" class="mt-2 btn btn-danger">
+                </form>
+
+    </div>
+        <div class="col-5 offset-3">
+            <h1>Информация</h1>
+            <div class="alert alert-light">
+                <b>Город:</b>{{city}}<br>
+                <b>Температура:</b> {{temperature}}<sup>°</sup>
+
+            </div>
+
+        </div>
+    </div>
+    </div>
+
+{%endblock%}
+
